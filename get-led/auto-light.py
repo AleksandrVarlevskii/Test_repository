@@ -6,4 +6,4 @@ GPIO.setup(26, GPIO.OUT)
 while True :
     GPIO.output(26,not (GPIO.input(6)))
     time.sleep(0.5)
-    print(not (GPIO.input(6)))
+    print(not (GPIO.input(6))) 
