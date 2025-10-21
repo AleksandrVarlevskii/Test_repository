@@ -1,32 +1,16 @@
-raspi-gpio set 2 a0
-raspi-gpio set 3 a0
-raspi-gpio get
-import smbus
-def __init__(self, dynamic_range, address=0x61, verbose = True):
-    self.bus = smbus.SMBus(1)
-    
-    self.address = address
-    self.wm = 0x00
-    self.pds = 0x00
-    
-    self.verbose = verbose
-    self.dynamic_range = dynamic_range
 
+```
+class R2R_ADC:
+    def __init__(self, dynamic_range, compare_time = 0.01, verbose = False):
+        self.dynamic_range = dynamic_range
+        self.verbose = verbose
+        self.compare_time = compare_time
+        
+        self.bits_gpio = [26, 20, 19, 16, 13, 12, 25, 11]
+        self.comp_gpio = 21
 
-def deinit(self):
-    self.bus.close()
-
-
-ef set_number(self, number):
-    if not isinstance(number, int):
-        print("На вход ЦАП можно подавать только целые числа")
-
-    if not (0 <= number <= 4095):
-        print("Число выходит за разраядность MCP4752 (12 бит)")
-
-    first_byte = self.wm | self.pds | number >> 8
-    second_byte = number & 0xFF
-    self.bus.write_byte_data(0x61, first_byte, second_byte)
-
-    if self.verbose:
-        print(f"Число: {number}, отправленные по I2C данные: [0x{(self.address << 1):02X}, 0x{first_byte:02X}, 0x{second_byte:02X}]\n")
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.bits_gpio, GPIO.OUT, initial = 0)
+        GPIO.setup(self.comp_gpio, GPIO.IN)
+**sequential_counting_adc(self)
+ **get_sc_voltage(self)**
