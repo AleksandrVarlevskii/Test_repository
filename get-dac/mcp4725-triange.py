@@ -1,8 +1,8 @@
 import signal_generator as sg
 import mcp4725_driver as mcp
 import time
-amplitude = 1.1
-signal_frequency = 10
+amplitude = 4.8
+signal_frequency = 7
 sampling_frequency = 1000
 dac = None
 try:
